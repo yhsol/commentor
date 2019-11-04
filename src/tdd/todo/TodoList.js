@@ -11,13 +11,18 @@ import TodoItem from "./TodoItem";
 //   ];
 // }
 
-function TodoList({ todos }) {
+function TodoList({ todos, onToggle, onRemove }) {
   return (
-    <li>
+    <ul>
       {todos.map(todo => (
-        <TodoItem todo={todo} key={todo.id} />
+        <TodoItem
+          todo={todo}
+          key={todo.id}
+          onToggle={onToggle}
+          onRemove={onRemove}
+        />
       ))}
-    </li>
+    </ul>
   );
 }
 
