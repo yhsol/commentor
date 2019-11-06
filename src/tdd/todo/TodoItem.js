@@ -23,9 +23,9 @@ function TodoItem({ todo, onToggle, onRemove }) {
       >
         {text}
       </span>
-      <button onClick={() => onRemove(id)}>delete</button>
+      <button onClick={remove}>delete</button>
     </li>
   );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);
