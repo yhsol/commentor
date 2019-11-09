@@ -4,13 +4,20 @@ import Counter from "./tdd/react-testing-library/Counter";
 import TodoItem from "./tdd/todo/TodoItem";
 import TodoApp from "./tdd/todo/TodoApp";
 import DelayedToggle from "./tdd/react-testing-library/DelayedToggle";
+import Main from "./components/Main";
+import { ThemeProvider } from "styled-components";
+import Theme from "./styles/Theme";
+import GlobalStyles from "./styles/GlobalStyles";
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div>
-      <DelayedToggle />
-    </div>
+    <ThemeProvider theme={Theme}>
+      <>
+        <GlobalStyles />
+        <Main />
+      </>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
