@@ -21,6 +21,7 @@ import {
   SearchIcon,
   ExploreIcon
 } from "../utils/Icons";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -129,6 +130,7 @@ export default function SearchHeader() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
     </Menu>
   );
 
@@ -178,7 +180,7 @@ export default function SearchHeader() {
       <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Title
+            <Link to="/">Title</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

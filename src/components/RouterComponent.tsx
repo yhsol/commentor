@@ -10,8 +10,15 @@ import Recent from "./pages/Recent";
 import Detail from "./pages/Detail";
 import Search from "./pages/Search";
 import Main from "./pages/Main";
+import SearchHeader from "./SearchHeader";
+import styled from "styled-components";
 
-interface Props {}
+interface RouterComponentProps {}
+
+const Wrapper = styled.div`
+  width: 80vw;
+  margin: 0 auto;
+`;
 
 function RouterComponent() {
   return (
@@ -19,10 +26,13 @@ function RouterComponent() {
       <>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Route path="/count" component={Count} />
-          <Route path="/recent" component={Recent} />
-          <Route path="/search" component={Search} />
-          <Route path="/detail/:id" component={Detail} />
+          <Switch>
+            <SearchHeader />
+            <Route path="/count" component={Count} />
+            <Route path="/recent" component={Recent} />
+            <Route path="/search" component={Search} />
+            <Route path="/detail/:id" component={Detail} />
+          </Switch>
           <Redirect from="*" to="/" />
         </Switch>
       </>
