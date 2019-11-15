@@ -203,6 +203,9 @@ export default function SearchHeader() {
             <IconButton aria-label="show 17 new notifications" color="default">
               Recent
             </IconButton>
+            <IconButton aria-label="show 17 new notifications" color="default">
+              Viewd
+            </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"

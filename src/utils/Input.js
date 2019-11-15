@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
@@ -34,12 +34,19 @@ const useStyles = makeStyles(theme => ({
 
 function Input() {
   const classes = useStyles();
+  const [value, setValue] = useState("");
   const onChange = e => {
-    return console.log(e.target.value);
+    const value = e.target.value;
+    setValue(value);
+  };
+  const onSubmit = e => {
+    e.preventDefault();
+    alert(value);
+    console.log("it works?");
   };
   return (
     <Wrapper>
-      <Paper component="form" className={classes.root}>
+      <Paper component="form" className={classes.root} onSubmit={onSubmit}>
         <InputBase
           className={classes.input}
           placeholder="Search.."
@@ -51,7 +58,7 @@ function Input() {
           className={classes.iconButton}
           aria-label="search"
         >
-          <Link to="search">
+          <Link to="/search/:id">
             <SearchIcon />
           </Link>
         </IconButton>
