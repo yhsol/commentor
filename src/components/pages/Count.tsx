@@ -3,10 +3,9 @@ import SearchHeader from "../SearchHeader";
 
 interface Props {}
 
-function Count({  }: Props) {
+function Count({}: Props) {
   return (
     <div>
-      <SearchHeader />
       <div>count</div>
     </div>
   );

@@ -1,7 +1,9 @@
 import React from "react";
-import styled from "styled-components";
-import OpenMenu from "../../utils/OpenMenu";
+import styled, { css } from "styled-components";
+import UserMenu from "../../utils/UserMenu";
 import Input from "../../utils/Input";
+import { Link } from "react-router-dom";
+import { WithProps } from "../../styles/WithProps";
 
 const Title = styled.div`
   display: flex;
@@ -11,6 +13,7 @@ const Title = styled.div`
   margin-top: 8rem;
   min-height: fit-content;
   position: relative;
+  color: ${props => props.color || "black"};
 `;
 
 const SideMenu = styled.div`
@@ -33,23 +36,48 @@ const Categories = styled.div`
   margin: 0 auto;
 `;
 
-const CategoriesItems = styled.div`
+const CategoriesItem = styled.div<WithProps>`
   text-align: center;
+  height: 2rem;
+  ${props =>
+    props.fontsize &&
+    css`
+      font-size: 14px;
+    `}
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 1rem;
+    width: 0;
+    height: 2px;
+    border-bottom: 2px solid ${props => props.theme.uiColorBlue};
+    transition: width 0.3s;
+  }
+  &:hover::after {
+    width: 100%;
+    /* transition: width 0.3s; */
+  }
 `;
 
 function Main() {
   return (
     <div>
       <SideMenu>
-        <OpenMenu />
+        <UserMenu />
       </SideMenu>
       <div>
         <Title>title</Title>
         <Input />
         <Categories>
-          <CategoriesItems>popular</CategoriesItems>
-          <CategoriesItems>recent</CategoriesItems>
-          <CategoriesItems>viewd</CategoriesItems>
+          <Link to="/count">
+            <CategoriesItem fontsize={false}>count</CategoriesItem>
+          </Link>
+          <Link to="/recent">
+            <CategoriesItem>recent</CategoriesItem>
+          </Link>
+          <Link to="/viewd">
+            <CategoriesItem>viewd</CategoriesItem>
+          </Link>
         </Categories>
       </div>
     </div>
