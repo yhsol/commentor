@@ -27,7 +27,7 @@ function RouterComponent() {
         <Switch>
           <Route path="/" exact component={Main} />
           <Switch>
-            <SearchHeader />
+            {/* <SearchHeader /> */}
             <Route path="/count" component={Count} />
             <Route path="/recent" component={Recent} />
             <Route path="/search" component={Search} />
