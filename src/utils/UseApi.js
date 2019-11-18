@@ -25,7 +25,7 @@ import { movieApi } from "./AxiosInstance";
 export const PopularApi = () => {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     try {
