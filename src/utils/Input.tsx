@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,41 +12,45 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: "2px 4px",
-    display: "flex",
-    alignItems: "center",
-    width: 500
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1
-  },
-  iconButton: {
-    padding: 10
-  },
-  divider: {
-    height: 28,
-    margin: 4
-  }
-}));
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      padding: "2px 4px",
+      display: "flex",
+      alignItems: "center",
+      width: 500
+    },
+    input: {
+      marginLeft: theme.spacing(1),
+      flex: 1
+    },
+    iconButton: {
+      padding: 10
+    },
+    divider: {
+      height: 28,
+      margin: 4
+    }
+  })
+);
 
 function Input() {
   const classes = useStyles();
   const [value, setValue] = useState("");
-  const onChange = e => {
+  const onChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const value = e.target.value;
     setValue(value);
   };
-  const onSubmit = e => {
+  const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
     e.preventDefault();
     alert(value);
     console.log("it works?");
   };
   return (
     <Wrapper>
-      <Paper component="form" className={classes.root} onSubmit={onSubmit}>
+      <Paper component="asdfg" className={classes.root} onSubmit={onSubmit}>
         <InputBase
           className={classes.input}
           placeholder="Search.."

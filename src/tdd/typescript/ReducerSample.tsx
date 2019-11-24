@@ -46,6 +46,8 @@ function reducer(state: State, action: Action): State {
   }
 }
 
+// const intialState = {} 로 지정하면 color: Color 가 아닌 color: string 으로 읽어서 에러가 남.
+
 function ReducerSample() {
   const [state, dispatch] = useReducer(reducer, {
     count: 0,
@@ -54,8 +56,10 @@ function ReducerSample() {
     isGood: true
   });
 
-  const setCount = () => dispatch({ type: "SET_COUNT", count: 5 });
-  const setText = () => dispatch({ type: "SET_TEXT", text: "bye" });
+  const setCount = () =>
+    dispatch({ type: "SET_COUNT", count: state.count + 1 });
+  const setText = () =>
+    dispatch({ type: "SET_TEXT", text: state.text + "add" });
   const setColor = () => dispatch({ type: "SET_COLOR", color: "orange" });
   const toggleGood = () => dispatch({ type: "TOGGLE_GOOD" });
 
@@ -71,7 +75,7 @@ function ReducerSample() {
         <code>color: </code> {state.color}
       </p>
       <p>
-        <code>isGood: </code> {state.isGood}
+        <code>isGood: </code> {state.isGood ? "true" : "false"}
       </p>
       <div>
         <button onClick={setCount}>SET_COUNT</button>

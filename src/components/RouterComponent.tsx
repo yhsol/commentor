@@ -12,6 +12,7 @@ import Search from "./pages/Search";
 import Main from "./pages/Main";
 import SearchHeader from "./SearchHeader";
 import styled from "styled-components";
+import Viewd from "./pages/Viewd";
 
 interface RouterComponentProps {}
 
@@ -26,13 +27,12 @@ function RouterComponent() {
       <>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Switch>
-            {/* <SearchHeader /> */}
-            <Route path="/count" component={Count} />
-            <Route path="/recent" component={Recent} />
-            <Route path="/search" component={Search} />
-            <Route path="/detail/:id" component={Detail} />
-          </Switch>
+          <Route path="/count" component={Count} />
+          <Route path="/recent" component={Recent} />
+          <Route path="/viewd" component={Viewd} />
+
+          <Route path="/search" component={Search} />
+          <Route path="/detail/:id" component={Detail} />
           <Redirect from="*" to="/" />
         </Switch>
       </>

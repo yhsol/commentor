@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   margin: 2rem auto 0;
 `;
 
-function Count({}: Props) {
+function Viewd({}: Props) {
   const { loading, error, results }: ApiProps = PopularApi();
 
   console.log(results);
@@ -35,9 +35,10 @@ function Count({}: Props) {
               results.map((result: any) => <div>{result.title}</div>)}
           </div>
         )}
+        <div>count</div>
       </Wrapper>
     </div>
   );
 }
 
-export default Count;
+export default Viewd;

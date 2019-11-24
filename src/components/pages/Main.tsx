@@ -1,9 +1,9 @@
 import React, { FormEvent, ChangeEvent, useState } from "react";
 import styled, { css } from "styled-components";
 import UserMenu from "../../utils/UserMenu";
-import Input from "../../utils/Input";
 import { Link } from "react-router-dom";
 import { WithProps } from "../../styles/WithProps";
+import Input from "../../utils/SearchInput";
 
 const Title = styled.div`
   display: flex;

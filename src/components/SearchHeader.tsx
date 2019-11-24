@@ -197,15 +197,27 @@ export default function SearchHeader() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="default">
-              Count
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="default">
-              Recent
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="default">
-              Viewd
-            </IconButton>
+            <Link to="/count">
+              <IconButton aria-label="show 4 new mails" color="default">
+                Count
+              </IconButton>
+            </Link>
+            <Link to="/recent">
+              <IconButton
+                aria-label="show 17 new notifications"
+                color="default"
+              >
+                Recent
+              </IconButton>
+            </Link>
+            <Link to="/viewd">
+              <IconButton
+                aria-label="show 17 new notifications"
+                color="default"
+              >
+                Viewd
+              </IconButton>
+            </Link>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -235,7 +247,6 @@ export default function SearchHeader() {
       {renderMobileMenu}
       {renderMenu}
       {/* contents section */}
-      <div>it's content?</div>
     </div>
   );
 }

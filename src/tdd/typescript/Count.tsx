@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useRef } from "react";
 
 interface Information {
   name: string;
@@ -29,6 +29,7 @@ function reducer(state: number, action: Action): number {
 }
 
 function Count({ onSubmit }: FormProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState({
     name: "",
     description: ""
@@ -49,6 +50,10 @@ function Count({ onSubmit }: FormProps) {
       name: "",
       description: ""
     });
+    if (!inputRef.current) {
+      return;
+    }
+    inputRef.current.focus();
   };
 
   const [info, setInfo] = useState<Information | null>(null);
@@ -68,7 +73,7 @@ function Count({ onSubmit }: FormProps) {
         <button onClick={onDecrease}>-</button>
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" onChange={onChange} />
+        <input type="text" name="name" onChange={onChange} ref={inputRef} />
         <input type="text" name="description" onChange={onChange} />
         <button type="submit">등록</button>
       </form>

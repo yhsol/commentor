@@ -5,9 +5,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { UserIcon } from "./Icons";
 
 export default function UserMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleClick = event => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
