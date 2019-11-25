@@ -46,7 +46,6 @@ function Input() {
   const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
     e.preventDefault();
     alert(value);
-    console.log("it works?");
   };
   return (
     <Wrapper>
@@ -62,7 +61,7 @@ function Input() {
           className={classes.iconButton}
           aria-label="search"
         >
-          <Link to="/search/:id">
+          <Link to={`/search/${value}`}>
             <SearchIcon />
           </Link>
         </IconButton>
