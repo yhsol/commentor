@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchHeader from "../SearchHeader";
 import { SearchApi } from "../../utils/UseApi";
 import styled from "styled-components";
+import Feed from "../Feed";
+import { withRouter, RouteComponentProps } from "react-router";
+import SearchInput from "../../utils/SearchInput";
 
 interface Props {
   termProps: string;
@@ -17,13 +20,22 @@ const Wrapper = styled.div`
   margin: 2rem auto 0;
 `;
 
-function Search({ termProps }: Props) {
+function Search(props: RouteComponentProps) {
   const [value, setValue] = useState("");
   const [term, setTerm] = useState(value || "");
-  const { loading, error, results }: ApiProps = SearchApi(term);
+  const [searchTerm, setSearchTerm] = useState(
+    props.location.pathname.split("/")[2]
+  );
+  const { loading, error, results }: ApiProps = SearchApi(
+    props.location.pathname.split("/")[2]
+  );
   console.log(results);
   console.log(value);
-
+  console.log(props.location.pathname.split("/")[2]);
+  console.log(searchTerm);
+  // useEffect(() => {
+  //   setSearchTerm(searchTerm);
+  // }, [searchTerm]);
   const onChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -39,10 +51,11 @@ function Search({ termProps }: Props) {
   return (
     <div>
       <SearchHeader />
+      {/* <SearchInput /> */}
       <Wrapper>
-        <form onSubmit={onSubmit}>
+        {/* <form onSubmit={onSubmit}>
           <input type="text" onChange={onChange} />
-        </form>
+        </form> */}
         {/* {!loading && <div>{data}</div>} */}
         {loading ? (
           <div>loading...</div>
@@ -51,7 +64,14 @@ function Search({ termProps }: Props) {
             {results &&
               results.length > 0 &&
               results.map((result: any) => (
-                <div key={result.id}>{result.title}</div>
+                <Feed
+                  key={result.id}
+                  title={result.original_title}
+                  image={result.poster_path}
+                  overview={result.overview}
+                  vote_average={result.vote_average}
+                  release_date={result.release_date}
+                />
               ))}
           </div>
         )}
@@ -60,4 +80,4 @@ function Search({ termProps }: Props) {
   );
 }
 
-export default Search;
+export default withRouter(Search);

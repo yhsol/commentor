@@ -22,6 +22,7 @@ import {
   ExploreIcon
 } from "../utils/Icons";
 import { Link } from "react-router-dom";
+import SearchInputHeader from "../utils/SearchInputHeader";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor: fade(theme.palette.common.black, 0.14)
       },
       marginRight: theme.spacing(2),
-      marginLeft: 0,
+      marginLeft: theme.spacing(3),
       width: "100%",
       [theme.breakpoints.up("sm")]: {
         marginLeft: theme.spacing(3),
@@ -183,18 +184,19 @@ export default function SearchHeader() {
             <Link to="/">Title</Link>
           </Typography>
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
+            {/* <div className={classes.searchIcon}>
               <SearchIcon />
-            </div>
-            <InputBase
+            </div> */}
+            {/* <InputBase
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
               }}
               inputProps={{ "aria-label": "search" }}
-            />
+            /> */}
           </div>
+          <SearchInputHeader />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link to="/count">

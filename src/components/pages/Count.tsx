@@ -35,6 +35,7 @@ function Count({}: Props) {
               results.length > 0 &&
               results.map((result: any) => (
                 <Feed
+                  key={result.id}
                   title={result.original_title}
                   image={result.poster_path}
                   overview={result.overview}

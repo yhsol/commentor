@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { PopularApi } from "../../utils/UseApi";
 import Axios from "axios";
 import { movieApi } from "../../utils/AxiosInstance";
+import Feed from "../Feed";
 
 interface Props {}
 
@@ -32,7 +33,16 @@ function Viewd({}: Props) {
           <div>
             {results &&
               results.length > 0 &&
-              results.map((result: any) => <div>{result.title}</div>)}
+              results.map((result: any) => (
+                <Feed
+                  key={result.id}
+                  title={result.original_title}
+                  image={result.poster_path}
+                  overview={result.overview}
+                  vote_average={result.vote_average}
+                  release_date={result.release_date}
+                />
+              ))}
           </div>
         )}
         <div>count</div>

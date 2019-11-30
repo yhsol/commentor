@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "2px 4px",
       display: "flex",
       alignItems: "center",
-      width: 500
+      width: 300,
+      height: 50,
+      backgroundColor: "rgba(0, 0, 0, 0.05)"
     },
     input: {
       marginLeft: theme.spacing(1),
@@ -35,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function SearchInput(props: RouteChildrenProps) {
+function SearchInputHeader(props: RouteChildrenProps) {
   const classes = useStyles();
   const [value, setValue] = useState("");
   const onChange = (
@@ -74,4 +76,4 @@ function SearchInput(props: RouteChildrenProps) {
   );
 }
 
-export default withRouter(SearchInput);
+export default withRouter(SearchInputHeader);

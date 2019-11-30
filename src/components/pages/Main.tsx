@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import UserMenu from "../../utils/UserMenu";
 import { Link } from "react-router-dom";
 import { WithProps } from "../../styles/WithProps";
-import Input from "../../utils/SearchInput";
+import SearchInput from "../../utils/SearchInput";
 
 const Title = styled.div`
   display: flex;
@@ -21,10 +21,10 @@ const SideMenu = styled.div`
   justify-content: flex-end;
 `;
 
-const SearchInput = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+// const SearchInput = styled.div`
+//   display: flex;
+//   justify-content: center;
+// `;
 
 const Categories = styled.div`
   display: grid;
@@ -67,7 +67,7 @@ function Main() {
       </SideMenu>
       <div>
         <Title>title</Title>
-        <Input />
+        <SearchInput />
         <Categories>
           <Link to="/count">
             <CategoriesItem fontsize={false}>count</CategoriesItem>
