@@ -48,7 +48,7 @@ function SearchInputHeader(props: RouteChildrenProps) {
     setValue(value);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // alert(value);
     props.history.push(`/search/${value}`);

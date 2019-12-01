@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 function Count({}: Props) {
   const { loading, error, results }: ApiProps = PopularApi();
-
+  console.log(loading);
   console.log(results);
   return (
     <div>
