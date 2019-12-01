@@ -43,14 +43,15 @@ function Input() {
     const value = e.target.value;
     setValue(value);
   };
-  const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(value);
+    // alert(value);
     console.log("it works?");
   };
+
   return (
     <Wrapper>
-      <Paper component="asdfg" className={classes.root} onSubmit={onSubmit}>
+      <Paper component="form" className={classes.root} onSubmit={onSubmit}>
         <InputBase
           className={classes.input}
           placeholder="Search.."

@@ -20,10 +20,20 @@ const Wrapper = styled.div`
   margin: 2rem auto 0;
 `;
 
+const SelectSection = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 1rem;
+`;
+
 const SelectBox = styled.select`
   width: 8rem;
   height: 2.3rem;
   font-size: 1.2rem;
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.05);
 `;
 
 const SelectOptions = styled.option`
@@ -66,11 +76,13 @@ function Search(props: RouteComponentProps) {
           <div>loading...</div>
         ) : (
           <div>
-            <SelectBox value={selected} onChange={handleSelected}>
-              <SelectOptions value="popular">popular</SelectOptions>
-              <SelectOptions value="recent">recent</SelectOptions>
-              <SelectOptions value="viewd">viewd</SelectOptions>
-            </SelectBox>
+            <SelectSection>
+              <SelectBox value={selected} onChange={handleSelected}>
+                <SelectOptions value="popular">popular</SelectOptions>
+                <SelectOptions value="recent">recent</SelectOptions>
+                <SelectOptions value="viewd">viewd</SelectOptions>
+              </SelectBox>
+            </SelectSection>
             {results &&
               results.length > 0 &&
               results.map((result: any) => (

@@ -41,7 +41,6 @@ function Recent({}: Props) {
               ))}
           </div>
         )}
-        <div>count</div>
       </Wrapper>
     </div>
   );
