@@ -20,6 +20,17 @@ const Wrapper = styled.div`
   margin: 2rem auto 0;
 `;
 
+const SelectBox = styled.select`
+  width: 8rem;
+  height: 2.3rem;
+  font-size: 1.2rem;
+`;
+
+const SelectOptions = styled.option`
+  font-size: 1.2rem;
+  font-size: 1.2rem;
+`;
+
 function Search(props: RouteComponentProps) {
   const [value, setValue] = useState("");
   const [term, setTerm] = useState(value || "");
@@ -29,13 +40,12 @@ function Search(props: RouteComponentProps) {
   const { loading, error, results }: ApiProps = SearchApi(
     props.location.pathname.split("/")[2]
   );
-  console.log(results);
-  console.log(value);
-  console.log(props.location.pathname.split("/")[2]);
-  console.log(searchTerm);
-  // useEffect(() => {
-  //   setSearchTerm(searchTerm);
-  // }, [searchTerm]);
+
+  const [selected, setSelected] = useState("popular");
+  function handleSelected(e: React.ChangeEvent<HTMLSelectElement>) {
+    setSelected(e.target.value);
+  }
+
   const onChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -51,16 +61,16 @@ function Search(props: RouteComponentProps) {
   return (
     <div>
       <SearchHeader />
-      {/* <SearchInput /> */}
       <Wrapper>
-        {/* <form onSubmit={onSubmit}>
-          <input type="text" onChange={onChange} />
-        </form> */}
-        {/* {!loading && <div>{data}</div>} */}
         {loading ? (
           <div>loading...</div>
         ) : (
           <div>
+            <SelectBox value={selected} onChange={handleSelected}>
+              <SelectOptions value="popular">popular</SelectOptions>
+              <SelectOptions value="recent">recent</SelectOptions>
+              <SelectOptions value="viewd">viewd</SelectOptions>
+            </SelectBox>
             {results &&
               results.length > 0 &&
               results.map((result: any) => (
