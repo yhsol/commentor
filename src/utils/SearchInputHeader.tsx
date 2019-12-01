@@ -40,18 +40,21 @@ const useStyles = makeStyles((theme: Theme) =>
 function SearchInputHeader(props: RouteChildrenProps) {
   const classes = useStyles();
   const [value, setValue] = useState("");
+
   const onChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
     const value = e.target.value;
     setValue(value);
   };
+
   const onSubmit = (e: React.FormEvent<HTMLDivElement>) => {
     e.preventDefault();
     // alert(value);
     props.history.push(`/search/${value}`);
     setValue("");
   };
+
   return (
     <Wrapper>
       <Paper component="form" className={classes.root} onSubmit={onSubmit}>
