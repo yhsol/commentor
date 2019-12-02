@@ -22,7 +22,7 @@ import {
   ExploreIcon
 } from "../utils/Icons";
 import { Link } from "react-router-dom";
-import SearchInputHeader from "../utils/SearchInputHeader";
+import CustomSearchInput from "../utils/CustomSearchInput";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -196,7 +196,7 @@ export default function SearchHeader() {
               inputProps={{ "aria-label": "search" }}
             /> */}
           </div>
-          <SearchInputHeader />
+          <CustomSearchInput widthProps={20} heightProps={2.4} />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link to="/count">

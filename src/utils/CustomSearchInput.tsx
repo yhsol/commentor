@@ -1,27 +1,24 @@
 import React, { useState } from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import InputBase from "@material-ui/core/InputBase";
-import IconButton from "@material-ui/core/IconButton";
 import styled from "styled-components";
 import { SearchIcon } from "./Icons";
 import { Link, withRouter } from "react-router-dom";
 import { RouteChildrenProps, RouteComponentProps } from "react-router";
+import { WithProps } from "../styles/WithProps";
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const Form = styled.form`
+const Form = styled.form<WithProps>`
   display: grid;
   grid-template-columns: 9fr 1fr;
   align-items: center;
-  border-radius: 3px;
   padding: 2px 1rem;
-  width: 23rem;
-  height: 3.7rem;
+  width: ${props => props.widthProps}rem;
+  height: ${props => props.heightProps}rem;
   background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
 `;
 
 const Input = styled.input`
@@ -31,10 +28,15 @@ const Input = styled.input`
 `;
 
 const SLink = styled(Link)`
-  text-align: center;
+  text-align: end;
 `;
 
-function SearchInput(props: RouteComponentProps) {
+interface Props extends RouteComponentProps {
+  widthProps?: number;
+  heightProps?: number;
+}
+
+function CustomSearchInput({ history, widthProps, heightProps }: Props) {
   const [value, setValue] = useState("");
 
   const onChange = (
@@ -47,20 +49,30 @@ function SearchInput(props: RouteComponentProps) {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // alert(value);
-    props.history.push(`/search/${value}`);
+    history.push(`/search/${value}`);
     setValue("");
   };
 
   return (
     <Wrapper>
-      <Form onSubmit={onSubmit}>
+      <Form
+        onSubmit={onSubmit}
+        widthProps={widthProps}
+        heightProps={heightProps}
+      >
         <Input placeholder="Search.." value={value} onChange={onChange} />
+        {/* <IconButton
+          type="submit"
+          className={classes.iconButton}
+          aria-label="search"
+        > */}
         <SLink to={`/search/${value}`}>
           <SearchIcon />
         </SLink>
+        {/* </IconButton> */}
       </Form>
     </Wrapper>
   );
 }
 
-export default withRouter(SearchInput);
+export default withRouter(CustomSearchInput);

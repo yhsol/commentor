@@ -32,8 +32,8 @@ const Categories = styled.div`
   grid-auto-rows: 5rem;
   justify-content: center;
   align-items: center;
-  width: 500px;
   margin: 0 auto;
+  width: 23rem;
 `;
 
 const CategoriesItem = styled.div<WithProps>`
