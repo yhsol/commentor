@@ -17,7 +17,13 @@ interface ApiProps {
 }
 
 const Wrapper = styled.div`
-  margin: 2rem auto 0;
+  margin: 5rem auto 0;
+`;
+
+const Header = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100%;
 `;
 
 const SelectSection = styled.div`
@@ -70,7 +76,9 @@ function Search(props: RouteComponentProps) {
 
   return (
     <div>
-      <SearchHeader />
+      <Header>
+        <SearchHeader />
+      </Header>
       <Wrapper>
         {loading ? (
           <div>loading...</div>

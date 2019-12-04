@@ -12,7 +12,13 @@ interface ApiProps {
 }
 
 const Wrapper = styled.div`
-  margin: 2rem auto 0;
+  margin: 5rem auto 0;
+`;
+
+const Header = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100%;
 `;
 
 function Recent({}: Props) {
@@ -20,7 +26,9 @@ function Recent({}: Props) {
   console.log(results);
   return (
     <div>
-      <SearchHeader />
+      <Header>
+        <SearchHeader />
+      </Header>
       <Wrapper>
         {/* {!loading && <div>{data}</div>} */}
         {loading ? (

@@ -14,9 +14,17 @@ const Wrapper = styled.div`
   border-bottom: 1px solid black;
   display: grid;
   grid-template-columns: 2fr 8fr;
+  gap: 1rem;
 `;
 
-const Poster = styled.div``;
+const Poster = styled.div`
+  width: 100px;
+  height: 200px;
+`;
+
+const Image = styled.img`
+  max-block-size: -webkit-fill-available;
+`;
 
 const TitleSection = styled.div`
   margin-bottom: 1rem;
@@ -41,7 +49,10 @@ function Feed({ title, image, overview, vote_average, release_date }: Props) {
   return (
     <Wrapper>
       <Poster>
-        <img src={image} alt="poster image" />
+        <Image
+          src={`https://image.tmdb.org/t/p/w200/${image}`}
+          alt="poster image"
+        />
       </Poster>
       <div>
         <TitleSection>
