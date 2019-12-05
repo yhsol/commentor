@@ -1,0 +1,38 @@
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../modules";
+import { increase, decrease, increaseBy, decreaseBy } from "../modules/count";
+import Count from "../components/Count";
+
+function CountContainer() {
+  const count = useSelector((state: RootState) => state.countReducer.count);
+  const dispatch = useDispatch();
+
+  const onIncrease = () => {
+    dispatch(increase());
+  };
+
+  const onDecrease = () => {
+    dispatch(decrease());
+  };
+
+  const onIncreaseBy = (diff: number) => {
+    dispatch(increaseBy(diff));
+  };
+
+  const onDecreaseBy = (diff: number) => {
+    dispatch(decreaseBy(diff));
+  };
+
+  return (
+    <Count
+      count={count}
+      onIncrease={onIncrease}
+      onDecrease={onDecrease}
+      onIncreaseBy={onIncreaseBy}
+      onDecreaseBy={onDecreaseBy}
+    />
+  );
+}
+
+export default CountContainer;
