@@ -4,6 +4,7 @@ import UserMenu from "../../utils/UserMenu";
 import { Link } from "react-router-dom";
 import { WithProps } from "../../styles/WithProps";
 import SearchInput from "../../utils/SearchInput";
+import CustomSearchInput from "../../utils/CustomSearchInput";
 
 const Title = styled.div`
   display: flex;
@@ -67,7 +68,15 @@ function Main() {
       </SideMenu>
       <div>
         <Title>title</Title>
-        <SearchInput />
+        <div>
+          <CustomSearchInput
+            widthProps={26}
+            heightProps={3.5}
+            backgroundColorProps={"white"}
+            inputFontSize={"1.5rem"}
+            borderProps={"0.2rem solid black"}
+          />
+        </div>
         <Categories>
           <Link to="/count">
             <CategoriesItem fontsize={false}>count</CategoriesItem>

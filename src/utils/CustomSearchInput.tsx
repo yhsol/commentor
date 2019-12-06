@@ -15,16 +15,26 @@ const Form = styled.form<WithProps>`
   grid-template-columns: 9fr 1fr;
   align-items: center;
   padding: 2px 1rem;
-  width: ${props => props.widthProps}rem;
-  height: ${props => props.heightProps}rem;
-  background-color: rgba(0, 0, 0, 0.05);
+  width: ${props => (props.widthProps ? props.widthProps : "none")}rem;
+  height: ${props => (props.heightProps ? props.heightProps : "none")}rem;
+  background-color: ${props =>
+    props.backgroundColorProps
+      ? props.backgroundColorProps
+      : "rgba(0, 0, 0, 0.05)"};
   border-radius: 3px;
+  border: ${props => (props.borderProps ? props.borderProps : "none")};
 `;
 
-const Input = styled.input`
+const Input = styled.input<WithProps>`
   background-color: initial;
   border: none;
-  font-size: 1rem;
+  font-size: ${props => (props.inputFontSize ? props.inputFontSize : "1rem")};
+  font-weight: bold;
+
+  @media (max-width: 890px) {
+    font-size: 1rem;
+    font-weight: bold;
+  }
 `;
 
 const SLink = styled(Link)`
@@ -34,9 +44,19 @@ const SLink = styled(Link)`
 interface Props extends RouteComponentProps {
   widthProps?: number;
   heightProps?: number;
+  backgroundColorProps?: string;
+  inputFontSize?: string;
+  borderProps?: string;
 }
 
-function CustomSearchInput({ history, widthProps, heightProps }: Props) {
+function CustomSearchInput({
+  history,
+  widthProps,
+  heightProps,
+  backgroundColorProps,
+  inputFontSize,
+  borderProps
+}: Props) {
   const [value, setValue] = useState("");
 
   const onChange = (
@@ -59,15 +79,22 @@ function CustomSearchInput({ history, widthProps, heightProps }: Props) {
         onSubmit={onSubmit}
         widthProps={widthProps}
         heightProps={heightProps}
+        backgroundColorProps={backgroundColorProps}
+        borderProps={borderProps}
       >
-        <Input placeholder="Search.." value={value} onChange={onChange} />
+        <Input
+          placeholder="Search.."
+          value={value}
+          onChange={onChange}
+          inputFontSize={inputFontSize}
+        />
         {/* <IconButton
           type="submit"
           className={classes.iconButton}
           aria-label="search"
         > */}
         <SLink to={`/search/${value}`}>
-          <SearchIcon />
+          <SearchIcon fill={"black"} />
         </SLink>
         {/* </IconButton> */}
       </Form>

@@ -20,5 +20,6 @@ declare module "styled-components" {
     uiColorPupple: string;
     uiColorDeepPupple: string;
     uiColorNavy: string;
+    boldBox: string;
   }
 }

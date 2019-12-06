@@ -9,14 +9,14 @@ import SearchHeader from "./components/SearchHeader";
 import Count from "./tdd/redux/components/Count";
 import TodoInsert from "./tdd/redux/components/TodoInsert";
 import TodoList from "./tdd/redux/components/TodoList";
+import Header from "./components/Header";
 
 function App() {
   return (
     <ThemeProvider theme={Theme}>
       <>
         <GlobalStyles />
-        <TodoInsert />
-        <TodoList />
+        <RouterComponent />
       </>
     </ThemeProvider>
   );

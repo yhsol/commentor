@@ -11,14 +11,13 @@ interface Props {
 
 const Wrapper = styled.div`
   padding: 2rem;
-  border-bottom: 1px solid black;
+  border-bottom: 0.2rem solid black;
   display: grid;
   grid-template-columns: 2fr 8fr;
   gap: 1rem;
 `;
 
 const Poster = styled.div`
-  width: 100px;
   height: 200px;
 `;
 
@@ -35,6 +34,7 @@ const TitleSection = styled.div`
 
 const Title = styled.span`
   font-size: 1.5rem;
+  font-weight: bold;
 `;
 
 const Vote = styled.span`
