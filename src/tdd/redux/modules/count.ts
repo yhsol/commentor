@@ -1,5 +1,9 @@
-import React from "react";
-import { createAction, ActionType, createReducer } from "typesafe-actions";
+import {
+  createAction,
+  ActionType,
+  createReducer,
+  action
+} from "typesafe-actions";
 
 // action type
 const INCREASE = "count/INCREASE";
@@ -13,41 +17,44 @@ export const decrease = createAction(DECREASE)();
 export const increaseBy = createAction(INCREASE_BY)<number>();
 export const decreaseBy = createAction(DECREASE_BY)<number>();
 
-// typescript type for action creator
+// typescript type for action
 const actions = { increase, decrease, increaseBy, decreaseBy };
-
 type CountAction = ActionType<typeof actions>;
 
-//  state type, initial state
+// state => type for state, initial state
 type CountState = {
-  count: number;
+  countState: number;
 };
 
 const initialState: CountState = {
-  count: 0
+  countState: 0
 };
 
 // reducer
+const countReducer = createReducer<CountState, CountAction>(initialState, {
+  [INCREASE]: state => ({ countState: state.countState + 1 }),
+  [DECREASE]: state => ({ countState: state.countState - 1 }),
+  [INCREASE_BY]: (state, action) => ({
+    countState: state.countState + action.payload
+  }),
+  [DECREASE_BY]: (state, action) => ({
+    countState: state.countState + action.payload
+  })
+});
+
 // function countReducer(state: CountState = initialState, action: CountAction) {
 //   switch (action.type) {
 //     case INCREASE:
-//       return { count: state.count + 1 };
+//       return { countState: state.countState + 1 };
 //     case DECREASE:
-//       return { count: state.count - 1 };
+//       return { countState: state.countState - 1 };
 //     case INCREASE_BY:
-//       return { count: state.count + action.payload };
+//       return { countState: state.countState + action.payload };
 //     case DECREASE_BY:
-//       return { count: state.count - action.payload };
+//       return { countState: state.countState - action.payload };
 //     default:
 //       return state;
 //   }
 // }
-
-const countReducer = createReducer<CountState, CountAction>(initialState, {
-  [INCREASE]: state => ({ count: state.count + 1 }),
-  [DECREASE]: state => ({ count: state.count - 1 }),
-  [INCREASE_BY]: (state, action) => ({ count: state.count + action.payload }),
-  [DECREASE_BY]: (state, action) => ({ count: state.count - action.payload })
-});
 
 export default countReducer;

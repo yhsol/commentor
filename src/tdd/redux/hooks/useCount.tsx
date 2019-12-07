@@ -1,10 +1,12 @@
-import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../modules";
+import { useCallback } from "react";
 import { increase, decrease, increaseBy, decreaseBy } from "../modules/count";
 
-function useCount() {
-  const count = useSelector((state: RootState) => state.countReducer.count);
+export default function useCount() {
+  const count = useSelector(
+    (state: RootState) => state.countReducer.countState
+  );
   const dispatch = useDispatch();
 
   const onIncrease = useCallback(() => dispatch(increase()), [dispatch]);
@@ -18,13 +20,5 @@ function useCount() {
     [dispatch]
   );
 
-  return {
-    count,
-    onIncrease,
-    onDecrease,
-    onIncreaseBy,
-    onDecreaseBy
-  };
+  return { count, onIncrease, onDecrease, onIncreaseBy, onDecreaseBy };
 }
-
-export default useCount;
