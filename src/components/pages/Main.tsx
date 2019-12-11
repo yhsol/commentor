@@ -10,7 +10,7 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   font-size: 8rem;
-  height: 10rem;
+  height: 12rem;
   margin-top: 8rem;
   min-height: fit-content;
   position: relative;
@@ -69,7 +69,7 @@ function Main() {
         <UserMenu />
       </SideMenu>
       <div>
-        <Title>comment note</Title>
+        <Title>blogle</Title>
         <div>
           <CustomSearchInput
             widthProps={26}
