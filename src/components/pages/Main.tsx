@@ -69,7 +69,7 @@ function Main() {
         <UserMenu />
       </SideMenu>
       <div>
-        <Title>Title</Title>
+        <Title>comment note</Title>
         <div>
           <CustomSearchInput
             widthProps={26}
