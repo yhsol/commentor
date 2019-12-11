@@ -34,12 +34,14 @@ const Categories = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  width: 23rem;
+  width: 26rem;
 `;
 
 const CategoriesItem = styled.div<WithProps>`
   text-align: center;
   height: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   ${props =>
     props.fontsize &&
     css`

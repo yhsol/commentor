@@ -38,7 +38,7 @@ const countReducer = createReducer<CountState, CountAction>(initialState, {
     countState: state.countState + action.payload
   }),
   [DECREASE_BY]: (state, action) => ({
-    countState: state.countState + action.payload
+    countState: state.countState - action.payload
   })
 });
 

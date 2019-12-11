@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CustomSearchInput from "../utils/CustomSearchInput";
 import { Link } from "react-router-dom";
 import { UserIcon } from "../utils/Icons";
+import RouterComponent from "./RouterComponent";
 
 const Wrapper = styled.div`
   ${props => props.theme.boldBox}
@@ -86,6 +87,14 @@ const SelectMenu = styled.select`
   cursor: pointer;
 `;
 
+const SelectItem = styled.option`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-align-last: center;
+`;
+
 interface Props {}
 
 function Header({}: Props) {
@@ -102,11 +111,11 @@ function Header({}: Props) {
       </NavItem>
       <NavItem>
         <SelectMenu>
-          <option>menu</option>
-          <option>user</option>
-          <option>popular</option>
-          <option>recent</option>
-          <option>viwed</option>
+          <SelectItem>menu</SelectItem>
+          <SelectItem>popular</SelectItem>
+          <SelectItem>recent</SelectItem>
+          <SelectItem>viewd</SelectItem>
+          <SelectItem>popular</SelectItem>
         </SelectMenu>
       </NavItem>
       <Categories>
