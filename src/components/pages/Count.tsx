@@ -8,11 +8,7 @@ import Feed from "../Feed";
 import Header from "../Header";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../tdd/redux/modules";
-<<<<<<< HEAD
 import { fetchPopular } from "../../stateManagement/modules/fetchPopularReducer";
-=======
-import { fetchPopular } from "../../stateManagement/modules/fetch";
->>>>>>> 15ba857e9259a78844470d3550aa36bd045fc2aa
 import { useFetchAll } from "../../stateManagement/hooks/useFetchAll";
 
 interface Props {}
