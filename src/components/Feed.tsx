@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 interface Props {
   title: string;
@@ -7,6 +8,7 @@ interface Props {
   overview: string;
   vote_average?: string;
   release_date: string;
+  id?: number;
 }
 
 const Wrapper = styled.div`
@@ -45,7 +47,14 @@ const Overview = styled.div``;
 
 const Info = styled.div``;
 
-function Feed({ title, image, overview, vote_average, release_date }: Props) {
+function Feed({
+  id,
+  title,
+  image,
+  overview,
+  vote_average,
+  release_date
+}: Props) {
   return (
     <Wrapper>
       <Poster>
@@ -56,7 +65,9 @@ function Feed({ title, image, overview, vote_average, release_date }: Props) {
       </Poster>
       <div>
         <TitleSection>
-          <Title>{title}</Title>
+          <Link to={`/detail/${id}`}>
+            <Title>{title}</Title>
+          </Link>
           <Vote>release_date: {release_date}</Vote>
         </TitleSection>
         <Overview>{overview}</Overview>
