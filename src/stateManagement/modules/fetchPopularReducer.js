@@ -36,7 +36,7 @@ const initialState = {
   results: []
 };
 
-export default handleActions(
+const fetchPopularReducer = handleActions(
   {
     [FETCH_POPULAR_LOADING]: (state, action) => {
       return {
@@ -63,3 +63,5 @@ export default handleActions(
   },
   initialState
 );
+
+export default fetchPopularReducer;

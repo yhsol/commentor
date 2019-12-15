@@ -4,9 +4,9 @@ import todosReducer from "./todos";
 import nasaPost from "./nasaPost";
 import counterReducer from "./practice/modules/couter";
 import todos from "../modules/practice/modules/todos";
-import fetchReducer from "../../../stateManagement/modules/fetch";
-import fetch from "../../../stateManagement/modules/fetch";
-import fetchRecent from "../../../stateManagement/modules/fetchRecent";
+import fetchReducer from "../../../stateManagement/modules/fetchPopularReducer";
+import fetch from "../../../stateManagement/modules/fetchPopularReducer";
+import fetchRecent from "../../../stateManagement/modules/fetchRecentReducer";
 import fetchDetailReducer from "../../../stateManagement/modules/fetchDetailReducer";
 
 const rootReducer = combineReducers({
