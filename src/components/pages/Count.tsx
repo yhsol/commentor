@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import SearchHeader from "../SearchHeader";
 import styled from "styled-components";
 import { PopularApi } from "../../utils/UseApi";
@@ -6,6 +6,9 @@ import Axios from "axios";
 import { movieApi } from "../../utils/AxiosInstance";
 import Feed from "../Feed";
 import Header from "../Header";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../tdd/redux/modules";
+import { fetchPopular } from "../../stateManagement/modules/fetch";
 
 interface Props {}
 
@@ -26,8 +29,19 @@ const SHeader = styled.header`
 `;
 
 function Count({}: Props) {
-  const { loading, error, results }: ApiProps = PopularApi();
+  // const { loading, error, results }: ApiProps = PopularApi();
+
+  const dispatch = useDispatch();
+  const fetchDispatch = useCallback(() => dispatch(fetchPopular()), []);
+
+  useEffect(() => {
+    fetchDispatch();
+  }, [dispatch]);
+
+  const fetchSelect: any = useSelector((state: RootState) => state.fetch) || [];
+  const { loading, error, results } = fetchSelect;
   console.log(loading);
+  console.log(error);
   console.log(results);
   return (
     <div>
@@ -45,6 +59,7 @@ function Count({}: Props) {
               results.map((result: any) => (
                 <Feed
                   key={result.id}
+                  id={result.id}
                   title={result.original_title}
                   image={result.poster_path}
                   overview={result.overview}
