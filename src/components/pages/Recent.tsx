@@ -6,6 +6,7 @@ import Feed from "../Feed";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRecent } from "../../stateManagement/modules/fetchRecent";
 import { RootState } from "../../tdd/redux/modules";
+import { useFetchAll } from "../../stateManagement/hooks/useFetchAll";
 interface Props {}
 
 interface ApiProps {
@@ -25,18 +26,8 @@ const Header = styled.header`
 `;
 
 function Recent({}: Props) {
-  // const { loading, error, results }: ApiProps = RecentApi();
+  const { loading, error, results } = useFetchAll.useFetchRecent();
 
-  const dispatch = useDispatch();
-  const fetchDispatch = useCallback(() => dispatch(fetchRecent()), []);
-
-  useEffect(() => {
-    fetchDispatch();
-  }, [dispatch]);
-
-  const fetchSelect: any =
-    useSelector((state: RootState) => state.fetchRecent) || [];
-  const { loading, error, results } = fetchSelect;
   console.log(loading);
   console.log(error);
   console.log(results);

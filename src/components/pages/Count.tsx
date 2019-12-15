@@ -9,6 +9,7 @@ import Header from "../Header";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../tdd/redux/modules";
 import { fetchPopular } from "../../stateManagement/modules/fetch";
+import { useFetchAll } from "../../stateManagement/hooks/useFetchAll";
 
 interface Props {}
 
@@ -29,20 +30,12 @@ const SHeader = styled.header`
 `;
 
 function Count({}: Props) {
-  // const { loading, error, results }: ApiProps = PopularApi();
+  const { loading, error, results } = useFetchAll.useFetchPopular();
 
-  const dispatch = useDispatch();
-  const fetchDispatch = useCallback(() => dispatch(fetchPopular()), []);
-
-  useEffect(() => {
-    fetchDispatch();
-  }, [dispatch]);
-
-  const fetchSelect: any = useSelector((state: RootState) => state.fetch) || [];
-  const { loading, error, results } = fetchSelect;
   console.log(loading);
   console.log(error);
   console.log(results);
+
   return (
     <div>
       <SHeader>
