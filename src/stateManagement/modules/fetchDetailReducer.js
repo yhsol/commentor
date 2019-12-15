@@ -36,7 +36,7 @@ const initialState = {
   results: []
 };
 
-export default handleActions(
+const fetchDetailReducer = handleActions(
   {
     [FETCH_DETAIL_LOADING]: (state, action) => {
       return {
@@ -63,3 +63,5 @@ export default handleActions(
   },
   initialState
 );
+
+export default fetchDetailReducer;
