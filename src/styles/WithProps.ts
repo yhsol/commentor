@@ -7,4 +7,5 @@ export interface WithProps {
   backgroundColorProps?: string;
   inputFontSize?: string;
   borderProps?: string;
+  toggleOpen?: boolean;
 }

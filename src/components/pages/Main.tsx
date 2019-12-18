@@ -1,10 +1,10 @@
-import React, { FormEvent, ChangeEvent, useState } from "react";
+import React, { FormEvent, ChangeEvent, useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import UserMenu from "../../utils/UserMenu";
 import { Link } from "react-router-dom";
 import { WithProps } from "../../styles/WithProps";
-import SearchInput from "../../utils/SearchInput";
 import CustomSearchInput from "../../utils/CustomSearchInput";
+import { PopularList, RecentrList } from "./List";
 
 const Title = styled.div`
   display: flex;
@@ -22,11 +22,6 @@ const SideMenu = styled.div`
   justify-content: flex-end;
 `;
 
-// const SearchInput = styled.div`
-//   display: flex;
-//   justify-content: center;
-// `;
-
 const Categories = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -37,11 +32,12 @@ const Categories = styled.div`
   width: 26rem;
 `;
 
-const CategoriesItem = styled.div<WithProps>`
+const CategoriesItem = styled.button<WithProps>`
   text-align: center;
   height: 2rem;
   font-size: 1.2rem;
   font-weight: bold;
+  padding: 0;
   ${props =>
     props.fontsize &&
     css`
@@ -58,11 +54,53 @@ const CategoriesItem = styled.div<WithProps>`
   }
   &:hover::after {
     width: 100%;
-    /* transition: width 0.3s; */
   }
+  border: none;
+  background: none;
+  cursor: pointer;
+`;
+
+const StyledList = styled.div<WithProps>`
+  width: 26rem;
+  margin: 0 auto;
+  font-size: 1rem;
+`;
+
+const StyledListTitle = styled.div`
+display: flex;
+justify-content: space-between
+  margin-bottom: 1rem;
+`;
+
+const StyledButton = styled.button`
+  margin: 0 1rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: ${props => props.theme.uiColorBlue};
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 function Main() {
+  const [selectText, setSelectText] = useState("");
+  const [selectList, setSelectList] = useState(selectText);
+  const [open, setOpen] = useState(false);
+  const handleSelectList = (selectText: string) => {
+    setSelectText(selectText);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    setSelectList(selectText);
+    return () => {};
+  }, [selectText]);
+
   return (
     <div>
       <SideMenu>
@@ -80,16 +118,50 @@ function Main() {
           />
         </div>
         <Categories>
-          <Link to="/count">
-            <CategoriesItem fontsize={false}>count</CategoriesItem>
-          </Link>
-          <Link to="/recent">
-            <CategoriesItem>recent</CategoriesItem>
-          </Link>
-          <Link to="/viewd">
-            <CategoriesItem>viewd</CategoriesItem>
-          </Link>
+          <CategoriesItem
+            fontsize={false}
+            onClick={() => handleSelectList("popular")}
+          >
+            count
+          </CategoriesItem>
+          <CategoriesItem onClick={() => handleSelectList("recent")}>
+            recent
+          </CategoriesItem>
+          <CategoriesItem onClick={() => handleSelectList("viewd")}>
+            viewd
+          </CategoriesItem>
         </Categories>
+        {open === true && (
+          <div>
+            {selectList === "popular" && (
+              <StyledList>
+                <StyledListTitle>
+                  <Link to="/count">GO TO COUNT PAGE</Link>
+                  <StyledButton onClick={handleClose}> X</StyledButton>
+                </StyledListTitle>
+                <PopularList />
+              </StyledList>
+            )}
+            {selectList === "recent" && (
+              <StyledList>
+                <StyledListTitle>
+                  <Link to="/recent">GO TO RECENT PAGE</Link>
+                  <StyledButton onClick={handleClose}>X</StyledButton>
+                </StyledListTitle>
+                <RecentrList />
+              </StyledList>
+            )}
+            {selectList === "viewd" && (
+              <StyledList>
+                <StyledListTitle>
+                  <Link to="/viewd">GO TO VIEWD PAGE</Link>
+                  <StyledButton onClick={handleClose}>X</StyledButton>
+                </StyledListTitle>
+                <PopularList />
+              </StyledList>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
