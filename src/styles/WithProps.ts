@@ -8,4 +8,5 @@ export interface WithProps {
   inputFontSize?: string;
   borderProps?: string;
   toggleOpen?: boolean;
+  selectProps?: boolean;
 }

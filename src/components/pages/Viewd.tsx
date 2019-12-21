@@ -5,6 +5,7 @@ import { PopularApi } from "../../utils/UseApi";
 import Axios from "axios";
 import { movieApi } from "../../utils/AxiosInstance";
 import Feed from "../Feed";
+import Header from "../Header";
 
 interface Props {}
 
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
   margin: 5rem auto 0;
 `;
 
-const Header = styled.header`
+const SHeader = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
@@ -30,9 +31,9 @@ function Viewd({}: Props) {
   console.log(results);
   return (
     <div>
-      <Header>
-        <SearchHeader />
-      </Header>
+      <SHeader>
+        <Header />
+      </SHeader>
       <Wrapper>
         {/* {!loading && <div>{data}</div>} */}
         {loading ? (
@@ -44,6 +45,7 @@ function Viewd({}: Props) {
               results.map((result: any) => (
                 <Feed
                   key={result.id}
+                  id={result.id}
                   title={result.original_title}
                   image={result.poster_path}
                   overview={result.overview}

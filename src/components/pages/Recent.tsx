@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRecent } from "../../stateManagement/modules/fetchRecentReducer";
 import { RootState } from "../../tdd/redux/modules";
 import { useFetchAll } from "../../stateManagement/hooks/useFetchAll";
+import Header from "../Header";
 interface Props {}
 
 interface ApiProps {
@@ -19,7 +20,7 @@ const Wrapper = styled.div`
   margin: 5rem auto 0;
 `;
 
-const Header = styled.header`
+const SHeader = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
@@ -34,9 +35,9 @@ function Recent({}: Props) {
 
   return (
     <div>
-      <Header>
-        <SearchHeader />
-      </Header>
+      <SHeader>
+        <Header />
+      </SHeader>
       <Wrapper>
         {/* {!loading && <div>{data}</div>} */}
         {loading ? (
@@ -48,6 +49,7 @@ function Recent({}: Props) {
               results.map((result: any) => (
                 <Feed
                   key={result.id}
+                  id={result.id}
                   title={result.original_title}
                   image={result.poster_path}
                   overview={result.overview}

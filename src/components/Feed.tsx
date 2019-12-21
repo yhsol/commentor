@@ -8,7 +8,7 @@ interface Props {
   overview: string;
   vote_average?: string;
   release_date: string;
-  id?: number;
+  id: number;
 }
 
 const Wrapper = styled.div`

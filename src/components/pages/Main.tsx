@@ -67,8 +67,8 @@ const StyledList = styled.div<WithProps>`
 `;
 
 const StyledListTitle = styled.div`
-display: flex;
-justify-content: space-between
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1rem;
 `;
 
@@ -121,13 +121,20 @@ function Main() {
           <CategoriesItem
             fontsize={false}
             onClick={() => handleSelectList("popular")}
+            selectProps={selectText === "popular"}
           >
             count
           </CategoriesItem>
-          <CategoriesItem onClick={() => handleSelectList("recent")}>
+          <CategoriesItem
+            onClick={() => handleSelectList("recent")}
+            selectProps={selectText === "recent"}
+          >
             recent
           </CategoriesItem>
-          <CategoriesItem onClick={() => handleSelectList("viewd")}>
+          <CategoriesItem
+            onClick={() => handleSelectList("viewd")}
+            selectProps={selectText === "viewd"}
+          >
             viewd
           </CategoriesItem>
         </Categories>
