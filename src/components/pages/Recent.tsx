@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SearchHeader from "../SearchHeader";
 import Feed from "../Feed";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRecent } from "../../stateManagement/modules/fetchRecentReducer";
+import { fetchRecent } from "../../stateManagement/modules/fetch/fetchRecentReducer";
 import { RootState } from "../../tdd/redux/modules";
 import { useFetchAll } from "../../stateManagement/hooks/useFetchAll";
 import Header from "../Header";

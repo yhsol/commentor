@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { RootState } from "../../tdd/redux/modules";
-import { fetchPopular } from "../modules/fetchPopularReducer";
-import { fetchRecent } from "../modules/fetchRecentReducer";
-import { fetchDetail } from "../modules/fetchDetailReducer";
+import { fetchPopular } from "../modules/fetch/fetchPopularReducer";
+import { fetchRecent } from "../modules/fetch/fetchRecentReducer";
+import { fetchDetail } from "../modules/fetch/fetchDetailReducer";
 
 export function useFetchPopular() {
   const dispatch = useDispatch();

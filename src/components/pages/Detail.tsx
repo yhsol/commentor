@@ -1,27 +1,32 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { DetailApi } from "../../utils/UseApi";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDetail } from "../../stateManagement/modules/fetchDetailReducer";
+import { fetchDetail } from "../../stateManagement/modules/fetch/fetchDetailReducer";
 import { RootState } from "../../tdd/redux/modules";
-import { withRouter } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router";
 import { useFetchAll } from "../../stateManagement/hooks/useFetchAll";
 
-interface Props {
-  id: number;
+interface DetailProps extends RouteComponentProps {
+  count: number;
+  onIncrease: () => void;
+  onDecrease: () => void;
+  onIncreaseBy: (diff: number) => void;
+  onDecreaseBy: (diff: number) => void;
+  match: any;
 }
 
-interface ApiProps {
-  loading: any;
-  error: any;
-  results: any;
-}
-
-function Detail(props: any) {
+function Detail({
+  match,
+  count,
+  onIncrease,
+  onDecrease,
+  onIncreaseBy,
+  onDecreaseBy
+}: any) {
   const {
-    match: {
-      params: { id }
-    }
-  } = props;
+    params: { id }
+  } = match;
+  console.log(match);
   const parsedId = parseInt(id);
   const [stateId, setStateId] = useState(parsedId);
 

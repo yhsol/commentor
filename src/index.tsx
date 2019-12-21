@@ -5,10 +5,9 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./tdd/redux/modules";
-import loggerMiddleware from "./tdd/redux/logger/loggerMiddleware";
 import { createLogger } from "redux-logger";
 import ReduxThunk from "redux-thunk";
+import rootReducer from "./stateManagement/modules";
 
 const logger = createLogger();
 
