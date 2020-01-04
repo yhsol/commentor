@@ -31,7 +31,7 @@ function RouterComponent() {
         <Suspense fallback={<Loading>loading..</Loading>}>
           <Switch>
             <Route path="/" exact component={Main} />
-            <Route path="/count" component={Count} />
+            <Route path="/count/" component={Count} />
             <Route path="/recent" component={Recent} />
             <Route path="/viewd" component={Viewd} />
 

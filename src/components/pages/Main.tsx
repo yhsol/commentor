@@ -143,7 +143,7 @@ function Main() {
             {selectList === "popular" && (
               <StyledList>
                 <StyledListTitle>
-                  <Link to="/count">GO TO COUNT PAGE</Link>
+                  <Link to="/count?page=1">GO TO COUNT PAGE</Link>
                   <StyledButton onClick={handleClose}> X</StyledButton>
                 </StyledListTitle>
                 <PopularList />

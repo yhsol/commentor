@@ -57,6 +57,7 @@ function Search(props: RouteComponentProps) {
   const { loading, error, results }: ApiProps = SearchApi(
     props.location.pathname.split("/")[2]
   );
+  console.log(props.match, props.location);
 
   const [selected, setSelected] = useState("popular");
   function handleSelected(e: React.ChangeEvent<HTMLSelectElement>) {
