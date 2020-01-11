@@ -4,20 +4,23 @@ import Theme from "./styles/Theme";
 import GlobalStyles from "./styles/GlobalStyles";
 import RouterComponent from "./components/RouterComponent";
 import InputForm from "./utils/InputForm";
-import ReducerSample from "./tdd/typescript/ReducerSample";
 import SearchHeader from "./components/SearchHeader";
 import Header from "./components/Header";
 import Nasa from "./tdd/redux/thunk/Nasa";
-import Counter from "./tdd/redux/modules/practice/components/Counter";
-import Todolist from "./tdd/redux/modules/practice/components/Todolist";
-import TodoInsert from "./tdd/redux/modules/practice/components/TodoInsert";
+import Counter from "./tdd/typescript/Counter";
+import MyForm from "./tdd/typescript/MyForm";
 
 function App() {
+  const onSubmit = (form: { name: string; description: string }) => {
+    console.log(form);
+  };
   return (
     <ThemeProvider theme={Theme}>
       <>
         <GlobalStyles />
-        <RouterComponent />
+        {/* <RouterComponent /> */}
+        <Counter />
+        <MyForm onSubmit={onSubmit} />
       </>
     </ThemeProvider>
   );
