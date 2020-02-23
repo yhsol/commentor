@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Nasa from "./tdd/redux/thunk/Nasa";
 import Counter from "./tdd/typescript/Counter";
 import MyForm from "./tdd/typescript/MyForm";
+import ReducerSample from "./tdd/typescript/ReducerSample";
 
 function App() {
   const onSubmit = (form: { name: string; description: string }) => {
@@ -21,6 +22,7 @@ function App() {
         {/* <RouterComponent /> */}
         <Counter />
         <MyForm onSubmit={onSubmit} />
+        <ReducerSample />
       </>
     </ThemeProvider>
   );

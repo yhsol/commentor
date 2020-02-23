@@ -20,7 +20,7 @@ function reducer(state: State, action: Action): State {
     case "SET_COUNT":
       return {
         ...state,
-        count: action.count
+        count: state.count + action.count
       };
     case "SET_TEXT":
       return {
@@ -66,7 +66,7 @@ function ReducerSample() {
         <code>color: </code> {state.color}
       </p>
       <p>
-        <code>isGood: </code> {state.isGood}
+        <code>isGood: </code> {state.isGood ? "true" : "false"}
       </p>
       <div>
         <button onClick={setCount}>SET_COUNT</button>
@@ -77,3 +77,5 @@ function ReducerSample() {
     </div>
   );
 }
+
+export default ReducerSample;

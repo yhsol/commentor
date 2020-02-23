@@ -18,6 +18,39 @@ function Counter() {
   const onIncrease = () => dispatch({ type: "INCREASE" });
   const onDecrease = () => dispatch({ type: "DECREASE" });
 
+  type Items<T> = {
+    list: T[];
+  };
+
+  const items: Items<number> = {
+    list: [1, 2, 3]
+  };
+
+  class Queue<T> {
+    list: T[] = [];
+    get length() {
+      return this.list.length;
+    }
+    enqueue(item: T) {
+      this.list.push(item);
+    }
+    dequeue() {
+      return this.list.shift();
+    }
+  }
+
+  const queue = new Queue<string>();
+  queue.enqueue("0");
+  queue.enqueue("1");
+  queue.enqueue("2");
+  queue.enqueue("3");
+  queue.enqueue("4");
+  console.log(queue.dequeue());
+  console.log(queue.dequeue());
+  console.log(queue.dequeue());
+  console.log(queue.dequeue());
+  console.log(queue.dequeue());
+
   return (
     <div>
       <h1>{count}</h1>
