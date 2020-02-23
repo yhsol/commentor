@@ -51,6 +51,15 @@ function Counter() {
   console.log(queue.dequeue());
   console.log(queue.dequeue());
 
+  function merge<A, B>(a: A, b: B): A & B {
+    return {
+      ...a,
+      ...b
+    };
+  }
+
+  const merged = merge({ foo: 1 }, { bar: 1 });
+
   return (
     <div>
       <h1>{count}</h1>
